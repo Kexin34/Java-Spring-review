@@ -1,5 +1,12 @@
-简介-注解驱动开发
-当我们还在使用Spring、SpringMVC、Mybatis三大框架来整合开发的时候，我们会写大量的xml文件来进行配置；然而在Springboot和SpringCloud兴起之后，学习Spring的注解驱动及其原理那将会是非常有必要的了；因为在Springboot和SpringCloud里面会使用到大量的注解来进行配置；当我们熟练掌握了Spring的注解驱动，那当我们在学习Springboot和SpringCloud框架的时候，那将会更加的轻松自如；让我们一起来开启Spring注解驱动开发的学习之旅吧！
+# 简介-注解驱动开发
+
+当我们还在使用Spring、SpringMVC、Mybatis三大框架来整合开发的时候，我们会写大量的xml文件来进行配置；然而在Springboot和SpringCloud兴起之后，学习Spring的注解驱动及其原理那将会是非常有必要的了；因为在Springboot和SpringCloud里面会使用到大量的注解来进行配置；当我们熟练掌握了Spring的注解驱动，那当我们在学习Springboot和SpringCloud框架的时候，那将会更加的轻松自如；
+
+参考：雷锋丰阳老师的Spring注解驱动教程，版本为Spring4
+
+![image-20210405144400158](C:\Users\kexin\AppData\Roaming\Typora\typora-user-images\image-20210405144400158.png)
+
+
 
 ## 组件注册-@Configuration&@Bean给容器中注册组件
 
@@ -7,72 +14,72 @@
 导入 spring-context jar包 – 这个就是Spring核心环境所有依赖的jar包
 Maven仓库中的spring-context
 
-
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <project xmlns="http://maven.apache.org/POM/4.0.0"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-        <modelVersion>4.0.0</modelVersion>
-        
-        <groupId>com.ldc</groupId>
-        <artifactId>spring-annotation</artifactId>
-        <version>1.0-SNAPSHOT</version>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     
-        <dependencies>
-            <!--https://mvnrepository.com/artifact/org.springframework/spring-context -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>4.3.12.RELEASE</version>
-            </dependency>
-        </dependencies>
-     </project>
+    <groupId>com.ldc</groupId>
+    <artifactId>spring-annotation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!--https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.12.RELEASE</version>
+        </dependency>
+    </dependencies>
+ </project>
+```
 
 
 **xml文件配置的方式**
 先按照我们以前配置的方式来使用Spring：
 首先有一个Person类：
 
-    public class Person {
-        private String name;
-        private Integer age;
-        public Person() {
-        }
-    
-        public Person(String name, Integer age) {
-            this.name = name;
-            this.age = age;
-        }
-    
-        public String getName() {
-            return name;
-        }
-    
-        public void setName(String name) {
-            this.name = name;
-        }
-    
-        public Integer getAge() {
-            return age;
-        }
-    
-        public void setAge(Integer age) {
-            this.age = age;
-        }
-    
-        @Override
-        public String toString() {
-            return "Person{" +
-                    "name='" + name + '\'' +
-                    ", age=" + age +
-                    '}';
-        }
+```java
+public class Person {
+    private String name;
+    private Integer age;
+    public Person() {
     }
 
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+```
+
 我们再写上一个Spring的xml配置文件：
-
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1060,7 +1067,7 @@ false
 我们来看看当bean的作用域为单例的时候，它在IOC容器中是何时创建的：
 
 
-    
+​    
 ```java
 @Configuration
 public class MainConfig2 {

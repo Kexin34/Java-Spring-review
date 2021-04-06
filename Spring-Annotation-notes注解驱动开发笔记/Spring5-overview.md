@@ -1,7 +1,5 @@
 # Spring源码导读
 
-![image-20210405144400158](C:\Users\kexin\AppData\Roaming\Typora\typora-user-images\image-20210405144400158.png)
-
 ## spring注解
 
 - @Configuration 用于标注配置类
@@ -351,10 +349,6 @@ AutowiredAnnotationBeanPostProcessor执行过程：
 
 
 https://www.bilibili.com/video/BV1gW411W7wy?p=2&spm_id_from=pageDriver
-
-笔记
-
-Spring注解驱动开发（一）.https://blog.csdn.net/weixin_37778801/article/details/86233124
 
 
 
